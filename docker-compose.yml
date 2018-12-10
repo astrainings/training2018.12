@@ -1,0 +1,32 @@
+version: '3'
+services:
+  teamcity:
+    image: jetbrains/teamcity-server
+    container_name: teamcity-server
+    links:
+      - tc_agent
+    ports:
+      - "8111:8111"
+    volumes:
+      - ./data/teamcity/data:/data/teamcity_server/datadir
+      - ./data/teamcity/logs:/opt/teamcity/logs
+  tc_agent:
+    container_name: teamcity-agent
+    build:
+      context: .
+      dockerfile: Agent.Dockerfile
+    links:
+      - selenium
+    volumes:
+      - ./data/teamcity/agent:/data/teamcity_agent/conf
+      - .:/var/www
+    environment:
+      - SERVER_URL=http://teamcity-server:8111
+      - DOCKER_IN_DOCKER=start
+    privileged: true
+  selenium:
+      image: selenium/standalone-chrome-debug
+      container_name: selenium
+      ports:
+        - "4444:4444"
+

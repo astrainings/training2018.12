@@ -1,0 +1,16 @@
+{
+    "name": "visma/selenium-workshop",
+    "description": "Skeleton project for Visma Lithuania Selenium Workshop",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "config": {
+        "sort-packages": true,
+        "bin-dir": "bin/"
+    },
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "codeception/codeception": "^2.3",
+        "neronmoon/teamcity-codeception": "^0.1.0",
+        "flow/jsonpath": "^0.3.4"
+    }
+}

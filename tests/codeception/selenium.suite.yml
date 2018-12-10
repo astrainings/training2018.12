@@ -1,0 +1,9 @@
+actor: SeleniumTester
+modules:
+    enabled:
+        - \Helper\Selenium
+        - WebDriver:
+            url: 'https://google.com/'
+            window_size: false # disabled in ChromeDriver
+            host: selenium
+            browser: chrome
